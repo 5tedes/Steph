@@ -3,34 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Έκθεση Συμβάντος – Διακοπή Λειτουργίας www.aigaia.com.cy (19 Ιανουαρίου 2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #222;
+      --heading: #1a1a1a;
+      --border: #ccc;
+      --subtle-border: #ddd;
+      --code-bg: #f5f5f5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --text: #e6e6e6;
+        --heading: #f1f1f1;
+        --border: #444;
+        --subtle-border: #333;
+        --code-bg: #1a1d23;
+      }
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
-      color: #222;
+      color: var(--text);
+      background-color: var(--bg);
       margin: 40px;
     }
+
     h1, h2, h3 {
-      color: #1a1a1a;
+      color: var(--heading);
     }
+
     h1 {
-      border-bottom: 2px solid #ccc;
+      border-bottom: 2px solid var(--border);
       padding-bottom: 10px;
     }
+
     h2 {
       margin-top: 40px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--subtle-border);
       padding-bottom: 6px;
     }
+
     ul {
       margin-left: 20px;
     }
+
     code, pre {
-      background-color: #f5f5f5;
-      padding: 8px;
+      background-color: var(--code-bg);
+      padding: 10px;
       display: block;
-      border-left: 4px solid #ccc;
+      border-left: 4px solid var(--border);
       overflow-x: auto;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--subtle-border);
+      margin: 40px 0;
     }
   </style>
 </head>
@@ -45,14 +79,14 @@
 <strong>Ημερομηνία:</strong> 19 Ιανουαρίου 2026<br>
 <strong>Ζώνη Ώρας:</strong> Κύπρος (EET)<br>
 <strong>Επηρεαζόμενη Υπηρεσία:</strong> www.aigaia.com.cy<br>
-<strong>Μοντέλο Φιλοξενίας:</strong> Διαχειριζόμενη φιλοξενία (Managed Hosting)
+<strong>Μοντέλο Διαχείρησης:</strong> Διαχειριζόμενη διαχείρηση (Managed Hosting)
 </p>
 
 <p>
 Στις 19 Ιανουαρίου 2026, η ιστοσελίδα <strong>www.aigaia.com.cy</strong> παρουσίασε μη προγραμματισμένη
 διακοπή λειτουργίας κατά τη διάρκεια εργάσιμων ωρών.
 Το πρόβλημα εντοπίστηκε αρχικά από το προσωπικό του οργανισμού
-και όχι από τον πάροχο φιλοξενίας.
+και όχι από τον πάροχο διαχείρησης.
 Η υπηρεσία αποκαταστάθηκε περίπου δύο ώρες αργότερα.
 </p>
 
@@ -62,19 +96,19 @@
 και όχι σε πρόβλημα τοπικής προσωρινής μνήμης DNS, όπως αρχικά δηλώθηκε.
 </p>
 
----
+<hr>
 
 <h2>2. Χρονολόγιο Γεγονότων</h2>
 
 <ul>
   <li><strong>~10:00</strong> – Αναφορά από προσωπικό ότι η ιστοσελίδα δεν είναι προσβάσιμη</li>
-  <li><strong>10:00–11:05</strong> – Ενημέρωση παρόχου φιλοξενίας (χωρίς προειδοποίηση από monitoring)</li>
+  <li><strong>10:00–11:05</strong> – Ενημέρωση παρόχου διαχείρησης (χωρίς ειδοποίηση από monitoring)</li>
   <li><strong>11:05</strong> – Ο πάροχος αποδίδει το πρόβλημα σε τοπικό DNS και επιχειρεί απομακρυσμένο καθαρισμό cache (ανεπιτυχώς)</li>
   <li><strong>11:30</strong> – Ο πάροχος δηλώνει ότι το πρόβλημα έχει επιλυθεί</li>
   <li><strong>12:03</strong> – Η ιστοσελίδα καθίσταται προσβάσιμη εντός και εκτός τοπικού δικτύου</li>
 </ul>
 
----
+<hr>
 
 <h2>3. Τεχνικά Ευρήματα</h2>
 
@@ -93,7 +127,7 @@
 χαρακτηριστική αντιδραστικής παρέμβασης και όχι σταθερής ρύθμισης.
 </p>
 
----
+<hr>
 
 <h3>3.2 Πιστοποιητικό TLS / SSL</h3>
 
@@ -106,11 +140,11 @@
 
 <p>
 <strong>Συμπέρασμα:</strong><br>
-Η υποδομή φιλοξενίας προϋπήρχε του συμβάντος.
+Η υποδομή διαχείρησης προϋπήρχε του συμβάντος.
 Δεν πραγματοποιήθηκε νέα εγκατάσταση ή επανεκκίνηση περιβάλλοντος.
 </p>
 
----
+<hr>
 
 <h3>3.3 Έλεγχος HTTP / Εφαρμογής</h3>
 
@@ -132,7 +166,7 @@ location: https://www.aigaia.com.cy/
 μετά την αποκατάσταση, αποκλείοντας σφάλμα εφαρμογής.
 </p>
 
----
+<hr>
 
 <h2>4. Εκτίμηση Αιτίας</h2>
 
@@ -150,9 +184,9 @@ location: https://www.aigaia.com.cy/
   <li>Κατάρρευση εφαρμογής ή server</li>
 </ul>
 
----
+<hr>
 
-<h2>5. Αστοχίες Διαχείρισης Υπηρεσίας</h2>
+<h2>5. Αστοχίες Διαχείρησης Υπηρεσίας</h2>
 
 <ul>
   <li>Απουσία ενεργού monitoring και ειδοποιήσεων</li>
@@ -162,7 +196,7 @@ location: https://www.aigaia.com.cy/
   <li>Χρήση παρωχημένης έκδοσης PHP (5.6 – EOL)</li>
 </ul>
 
----
+<hr>
 
 <h2>6. Επιπτώσεις</h2>
 
@@ -173,7 +207,7 @@ location: https://www.aigaia.com.cy/
   <li>Εσωτερικό κόστος διερεύνησης</li>
 </ul>
 
----
+<hr>
 
 <h2>7. Συστάσεις</h2>
 
@@ -181,16 +215,16 @@ location: https://www.aigaia.com.cy/
   <li>Υλοποίηση monitoring με εξωτερικούς ελέγχους</li>
   <li>Σαφές SLA με ρήτρες διαθεσιμότητας</li>
   <li>Υποχρεωτική προειδοποίηση για αλλαγές</li>
-  <li>Επανεξέταση καταλληλότητας παρόχου φιλοξενίας</li>
+  <li>Επανεξέταση καταλληλότητας παρόχου διαχείρησης</li>
 </ul>
 
----
+<hr>
 
 <h2>8. Συμπέρασμα</h2>
 
 <p>
-Παρότι η υπηρεσία αποκαταστάθηκε, η διαχείριση του περιστατικού
-δεν συνάδει με βέλτιστες πρακτικές διαχειριζόμενης φιλοξενίας.
+Παρότι η υπηρεσία αποκαταστάθηκε, η διαχείρηση του περιστατικού
+δεν συνάδει με βέλτιστες πρακτικές διαχειριζόμενης διαχείρησης.
 Απαιτούνται διορθωτικές ενέργειες και σαφείς δεσμεύσεις από τον πάροχο.
 </p>
 
