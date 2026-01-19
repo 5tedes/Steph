@@ -1,0 +1,34 @@
+Email Suggestion:
+
+Dear [Support / Account / Management Team],
+
+We are formally escalating the outage affecting www.aigaia.com.cy on 19 January 2026 (approximately 10:00–12:03 Cyprus time) and requesting a full incident review.
+
+Our post-incident technical analysis indicates that the outage was not caused by client-side DNS caching, as initially suggested, but is consistent with a reactive DNS or backend infrastructure correction. Key findings include:
+	•	DNS A record currently resolves globally to 181.214.31.81
+	•	DNS TTL observed post-incident was approximately 5 minutes, indicative of a recent change
+	•	No IPv6 (AAAA) records are present
+	•	TLS certificate has been valid since 10 December 2025, ruling out a new deployment or certificate reissue during the incident
+	•	Service restoration aligned with resolver cache refresh timing, not local DNS flushing
+
+In addition to the technical cause, we have serious concerns regarding service management:
+	•	The outage was detected by our staff, not by your monitoring systems
+	•	No proactive alerts or notifications were issued
+	•	Initial diagnosis was incorrect and unsupported by evidence
+	•	No written incident report or timeline has been provided
+
+These gaps fall below accepted industry standards for managed hosting services.
+
+We therefore request the following:
+	1.	A written root-cause analysis and timeline for the incident
+	2.	Confirmation of all DNS, hosting, or infrastructure changes made on 19 Jan 2026
+	3.	Details of monitoring and alerting in place for our services
+	4.	A copy of the applicable SLA, including uptime and response commitments
+	5.	Uptime statistics for the past 12 months
+	6.	Clarification of any service credits or compensation applicable to this outage
+	7.	Confirmation of corrective actions to prevent recurrence
+
+We consider this escalation necessary to ensure service reliability and accountability going forward and expect a management-level response.
+
+Kind regards,
+[Your Name]
