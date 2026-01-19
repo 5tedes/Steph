@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Incident Report – www.aigaia.com.cy Outage (19 Jan 2026)</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      margin: 40px;
+    }
+    h1, h2, h3 {
+      color: #1a1a1a;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    code, pre {
+      background-color: #f5f5f5;
+      padding: 8px;
+      display: block;
+      border-left: 4px solid #ccc;
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Incident Report: Website Outage – www.aigaia.com.cy</h1>
+
+<h2>1. Incident Overview</h2>
+
+<p><strong>Date:</strong> 19 January 2026<br>
+<strong>Timezone:</strong> Cyprus (EET)<br>
+<strong>Affected Service:</strong> www.aigaia.com.cy<br>
+<strong>Hosting Model:</strong> Managed hosting (third-party provider)</p>
+
+<p>
+On 19 January 2026, the website <strong>www.aigaia.com.cy</strong> experienced an unplanned service outage during business hours.
+The issue was first identified internally by staff and not by the hosting provider.
+Service was restored approximately two hours later.
+</p>
+
+<p>
+Post-incident technical analysis indicates that the outage was most likely caused by a
+<strong>reactive DNS or upstream routing correction</strong>,
+rather than a client-side DNS cache issue as initially communicated by the hosting provider.
+</p>
+
+---
+
+<h2>2. Timeline of Events</h2>
+
+<ul>
+  <li><strong>~10:00</strong> – Staff report inability to access www.aigaia.com.cy</li>
+  <li><strong>10:00–11:05</strong> – Hosting provider notified; no proactive alert from provider monitoring</li>
+  <li><strong>11:05</strong> – Provider attributes issue to local DNS cache; attempts remote DNS flush on a workstation (unsuccessful due to permissions)</li>
+  <li><strong>11:30</strong> – Provider claims issue has been fixed</li>
+  <li><strong>12:03</strong> – Website becomes accessible internally and externally</li>
+  <li><strong>Post-incident</strong> – DNS, TLS, and HTTP-layer diagnostics performed</li>
+</ul>
+
+---
+
+<h2>3. Technical Findings</h2>
+
+<h3>3.1 DNS Resolution</h3>
+
+<ul>
+  <li>A record resolves globally to <strong>181.214.31.81</strong></li>
+  <li>Observed TTL post-incident: <strong>~5 minutes</strong></li>
+  <li>No AAAA (IPv6) record present</li>
+  <li>DNS resolution currently consistent across all regions</li>
+</ul>
+
+<p>
+<strong>Interpretation:</strong><br>
+A very low TTL is characteristic of a <strong>recent or reactive DNS change</strong>,
+rather than a long-standing stable configuration.
+This aligns with emergency troubleshooting or rollback activity.
+</p>
+
+---
+
+<h3>3.2 TLS / SSL Configuration</h3>
+
+<ul>
+  <li>Certificate valid from: <strong>10 December 2025</strong></li>
+  <li>Issuer: Let’s Encrypt (R12)</li>
+  <li>No certificate reissue or renewal on the incident date</li>
+  <li>TLS configuration rated <strong>Grade A</strong></li>
+</ul>
+
+<p>
+<strong>Interpretation:</strong><br>
+The hosting endpoint and application stack existed prior to the incident.
+The outage was not caused by a new deployment, server rebuild, or TLS reconfiguration.
+</p>
+
+---
+
+<h3>3.3 HTTP / Application Layer Verification</h3>
+
+<p>
+A post-recovery HTTP header inspection was performed using:
+</p>
+
+<pre>
+curl -I https://aigaia.com.cy
+</pre>
+
+<p><strong>Observed response:</strong></p>
+
+<pre>
+HTTP/2 301
+server: LiteSpeed
+x-powered-by: PHP/5.6.40
+x-redirect-by: WordPress
+location: https://www.aigaia.com.cy/
+</pre>
+
+<p>
+<strong>Interpretation:</strong><br>
+This confirms that:
+</p>
+
+<ul>
+  <li>The web server (LiteSpeed) was operational</li>
+  <li>PHP was executing successfully</li>
+  <li>WordPress was running and issuing a normal canonical redirect</li>
+</ul>
+
+<p>
+This conclusively rules out:
+</p>
+
+<ul>
+  <li>Application failure</li>
+  <li>Web server downtime</li>
+  <li>Broken virtual host configuration</li>
+</ul>
+
+---
+
+<h2>4. Root Cause Assessment</h2>
+
+<p><strong>Most likely cause:</strong></p>
+
+<p>
+A <strong>reactive DNS A-record change or upstream routing/backend correction</strong>
+performed after the outage began, pointing traffic back to an already running server.
+</p>
+
+<p><strong>Causes not supported by evidence:</strong></p>
+
+<ul>
+  <li>Client-side DNS cache failure</li>
+  <li>IPv6 misconfiguration</li>
+  <li>TLS or certificate issues</li>
+  <li>Application or server crash</li>
+</ul>
+
+---
+
+<h2>5. Service Management & Process Failures</h2>
+
+<p>
+Regardless of whether the change was reactive or planned, the following deficiencies were identified:
+</p>
+
+<ul>
+  <li><strong>No proactive monitoring:</strong> The provider did not detect or alert on the outage</li>
+  <li><strong>Incorrect initial diagnosis:</strong> Client-side DNS cache blamed without evidence</li>
+  <li><strong>Lack of communication:</strong> No incident notification or updates</li>
+  <li><strong>No post-incident reporting:</strong> No written RCA or timeline provided</li>
+  <li><strong>Legacy environment indicators:</strong> PHP 5.6 (end-of-life) suggests weak operational hygiene</li>
+</ul>
+
+---
+
+<h2>6. Impact</h2>
+
+<ul>
+  <li>Loss of website availability during business hours</li>
+  <li>Operational disruption</li>
+  <li>Reputational risk</li>
+  <li>Internal time spent on investigation and escalation</li>
+</ul>
+
+---
+
+<h2>7. Recommendations</h2>
+
+<ul>
+  <li>Implement provider-side external uptime monitoring with alerting</li>
+  <li>Define and enforce a formal SLA with uptime and response guarantees</li>
+  <li>Require advance notice for planned changes and post-incident reports for outages</li>
+  <li>Review suitability of current hosting provider for critical services</li>
+</ul>
+
+---
+
+<h2>8. Conclusion</h2>
+
+<p>
+The outage of www.aigaia.com.cy on 19 January 2026 was resolved through a reactive technical correction.
+However, the absence of proactive monitoring, incorrect diagnosis, and lack of formal incident handling
+represent a broader service delivery failure inconsistent with managed hosting best practices.
+</p>
+
+<p>
+Corrective actions and contractual clarification are required to restore confidence in the service.
+</p>
+
+</body>
+</html>
