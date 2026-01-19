@@ -2,46 +2,83 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Website Incident Explanation – aigaia.com.cy</title>
+  <title>Επεξήγηση Συμβάντος Ιστοσελίδας – aigaia.com.cy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg: #f7f7f7;
+      --text: #222;
+      --container-bg: #ffffff;
+      --border: #ccc;
+      --sub-border: #ddd;
+      --code-bg: #f2f2f2;
+      --shadow: rgba(0,0,0,0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --text: #e6e6e6;
+        --container-bg: #1a1d23;
+        --border: #444;
+        --sub-border: #333;
+        --code-bg: #2a2e36;
+        --shadow: rgba(0,0,0,0.6);
+      }
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
-      color: #222;
-      background-color: #f7f7f7;
+      color: var(--text);
+      background-color: var(--bg);
       margin: 0;
       padding: 0;
     }
+
     .container {
       max-width: 900px;
       margin: 60px auto;
-      background: #ffffff;
+      background: var(--container-bg);
       padding: 40px;
       border-radius: 6px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px var(--shadow);
     }
+
     h1 {
-      border-bottom: 2px solid #ccc;
+      border-bottom: 2px solid var(--border);
       padding-bottom: 10px;
     }
+
     h2 {
       margin-top: 40px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--sub-border);
       padding-bottom: 6px;
     }
+
     ul {
       margin-left: 20px;
     }
+
     code {
-      background: #f2f2f2;
+      background: var(--code-bg);
       padding: 2px 6px;
       border-radius: 4px;
+      font-family: monospace;
     }
+
+    blockquote {
+      border-left: 4px solid var(--border);
+      margin: 20px;
+      padding-left: 16px;
+      font-style: italic;
+      color: var(--text);
+    }
+
     hr {
       margin: 60px 0;
       border: none;
-      border-top: 2px solid #ddd;
+      border-top: 2px solid var(--sub-border);
     }
   </style>
 </head>
@@ -61,7 +98,7 @@
   </p>
 
   <ul>
-    <li><strong>Το πρόβλημα δεν εντοπίστηκε από την εταιρεία διαχείρισης</strong></li>
+    <li><strong>Το πρόβλημα δεν εντοπίστηκε από την εταιρεία διαχείρησης</strong></li>
     <li>Εντοπίστηκε από χρήστες που προσπαθούσαν να επισκεφθούν την ιστοσελίδα</li>
   </ul>
 
@@ -70,7 +107,6 @@
   <h2>2. Τι είναι το DNS (με απλά λόγια)</h2>
   <p>
     Το DNS λειτουργεί όπως ένας <strong>τηλεφωνικός κατάλογος του διαδικτύου</strong>.
-    Όταν πληκτρολογούμε:
   </p>
 
   <code>www.aigaia.com.cy</code>
@@ -80,36 +116,17 @@
   <p>Η απάντηση είναι ένας αριθμός (IP), π.χ.:</p>
   <code>181.214.31.81</code>
 
-  <p>
-    Αν αυτή η πληροφορία είναι λανθασμένη ή αλλάξει,
-    η ιστοσελίδα δεν μπορεί να βρεθεί.
-  </p>
-
   <h2>3. Τι μας αναφέρθηκε</h2>
   <ul>
     <li>Αναφέρθηκε ότι «το πρόβλημα διορθώθηκε»</li>
-    <li>Δεν δόθηκε σαφής εξήγηση για την καθυστέρηση</li>
+    <li>Δεν δόθηκε σαφής εξήγηση από την εταιρεία διαχείρησης</li>
     <li>Δεν αναφέρθηκε αλλαγή DNS ή χρόνος διάδοσης</li>
     <li>Η λύση που προτάθηκε ήταν καθαρισμός cache</li>
   </ul>
 
-  <h2>4. Γιατί αυτό δεν επαρκεί</h2>
-  <ul>
-    <li>Το πρόβλημα ήταν γενικό, όχι τοπικό</li>
-    <li>Η αποκατάσταση έγινε ταυτόχρονα</li>
-    <li>Παρατηρήθηκε πολύ μικρό TTL</li>
-  </ul>
-
-  <h2>5. Τι πιθανότατα συνέβη</h2>
-  <ul>
-    <li>Υπήρξε αλλαγή ή σφάλμα στη διαχείριση</li>
-    <li>Δεν υπήρχε ενεργό monitoring</li>
-    <li>Η διόρθωση έγινε αντιδραστικά</li>
-  </ul>
-
   <h2>6. Συμπέρασμα</h2>
   <p>
-    Το περιστατικό δείχνει ότι ο τρόπος διαχείρισης
+    Το περιστατικό δείχνει ότι ο τρόπος διαχείρησης
     και επικοινωνίας χρειάζεται επανεξέταση.
   </p>
 
@@ -129,46 +146,6 @@
   <ul>
     <li><strong>The issue was not detected by the managed services provider</strong></li>
     <li>It was identified by users attempting to access the site</li>
-  </ul>
-
-  <p>The site was restored at approximately <strong>12:00</strong>.</p>
-
-  <h2>2. What DNS is (in simple terms)</h2>
-  <p>
-    DNS is like a <strong>phone book for the internet</strong>.
-    When you enter a website address, your computer asks:
-  </p>
-
-  <blockquote>“Which server hosts this website?”</blockquote>
-
-  <p>The answer is an IP address, for example:</p>
-  <code>181.214.31.81</code>
-
-  <p>
-    If this information is missing or incorrect,
-    the website cannot be found.
-  </p>
-
-  <h2>3. What we were told</h2>
-  <ul>
-    <li>We were told the issue was “fixed”</li>
-    <li>No clear technical explanation was provided</li>
-    <li>No mention of DNS propagation or timing</li>
-    <li>Cache clearing was suggested as the solution</li>
-  </ul>
-
-  <h2>4. Why this explanation does not hold</h2>
-  <ul>
-    <li>The issue affected multiple networks</li>
-    <li>Restoration occurred simultaneously</li>
-    <li>DNS settings showed a very short TTL</li>
-  </ul>
-
-  <h2>5. What most likely happened</h2>
-  <ul>
-    <li>A DNS or backend configuration problem occurred</li>
-    <li>No automated monitoring detected the outage</li>
-    <li>The fix was reactive after user reporting</li>
   </ul>
 
   <h2>6. Conclusion</h2>
