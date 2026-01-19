@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Data Migration Flowchart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #f1f5f9;
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .phase {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: #f1f5f9;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid #475569;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .phase-number {
+            background: #60a5fa;
+            color: #0f172a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .phase-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .phase-duration {
+            background: rgba(96, 165, 250, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-left: auto;
+            color: #93c5fd;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .step {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #60a5fa;
+            border: 1px solid #334155;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #93c5fd;
+        }
+
+        .step-details {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .step-details ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .step-details li {
+            margin-bottom: 5px;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 40px;
+            color: #60a5fa;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .warning-box {
+            background: #422006;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid #78350f;
+        }
+
+        .warning-title {
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-content {
+            color: #fcd34d;
+            line-height: 1.8;
+        }
+
+        .warning-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .warning-content li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SAP Data Migration & Correction Flowchart</h1>
+        <div class="subtitle" style="text-align: center; color: #94a3b8; margin-bottom: 30px; font-size: 16px;">
+            From 4500 Incorrect Items + 2500 New Items → 7000 Clean Items in SAP
+        </div>
+
+        <!-- Current Issues Section -->
+        <div style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%); border-radius: 15px; padding: 30px; margin-bottom: 40px; border: 1px solid #b91c1c; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="font-size: 48px; margin-bottom: 10px;">⚠️</div>
+                <h2 style="color: #fecaca; margin: 0; font-size: 24px; font-weight: 600;">Current Issues Identified</h2>
+                <p style="color: #fca5a5; margin-top: 8px; font-size: 14px;">Problems affecting the 4,500 existing items in SAP</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- Issue 1 -->
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 28px; flex-shrink: 0; line-height: 1;">🔄</div>
+                        <div>
+                            <h3 style="color: #fecaca; margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">Mismatch of Stock List Fields to SAP Fields</h3>
+                            <p style="color: #fca5a5; margin: 0; font-size: 14px; line-height: 1.6;">
+                                Field names and structures in the original stock list don't align with SAP's required field names and formats, causing confusion and incorrect data mapping.
+                            </p>
+                            <div style="margin-top: 12px; padding: 10px; background: rgba(239, 68, 68, 0.2); border-radius: 6px;">
+                                <p style="color: #fecaca; margin: 0; font-size: 13px;"><strong>Example:</strong> "Item Code" → SAP expects "Material Number"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 2 -->
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 28px; flex-shrink: 0; line-height: 1;">❌</div>
+                        <div>
+                            <h3 style="color: #fecaca; margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">Lack of Correct SAP Fields Initially</h3>
+                            <p style="color: #fca5a5; margin: 0; font-size: 14px; line-height: 1.6;">
+                                Initial data preparation didn't include all mandatory SAP fields, resulting in incomplete records that can't function properly in the system.
+                            </p>
+                            <div style="margin-top: 12px; padding: 10px; background: rgba(239, 68, 68, 0.2); border-radius: 6px;">
+                                <p style="color: #fecaca; margin: 0; font-size: 13px;"><strong>Missing:</strong> UOM, Plant Code, Storage Location, Material Group</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 3 -->
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 28px; flex-shrink: 0; line-height: 1;">🔀</div>
+                        <div>
+                            <h3 style="color: #fecaca; margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">Errors in Data Transfer</h3>
+                            <p style="color: #fca5a5; margin: 0; font-size: 14px; line-height: 1.6;">
+                                During the import process, data was placed in wrong fields, causing critical errors like prices in description fields or SKUs in name fields.
+                            </p>
+                            <div style="margin-top: 12px; padding: 10px; background: rgba(239, 68, 68, 0.2); border-radius: 6px;">
+                                <p style="color: #fecaca; margin: 0; font-size: 13px;"><strong>Example:</strong> Product descriptions appearing in price fields</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 4 -->
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 28px; flex-shrink: 0; line-height: 1;">🏗️</div>
+                        <div>
+                            <h3 style="color: #fecaca; margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">Poor Initial Database Design</h3>
+                            <p style="color: #fca5a5; margin: 0; font-size: 14px; line-height: 1.6;">
+                                SAP fields were not designed properly from the start as the database design was lacking. The SAP team didn't communicate enough with the client to understand their specific business needs.
+                            </p>
+                            <div style="margin-top: 12px; padding: 10px; background: rgba(239, 68, 68, 0.2); border-radius: 6px;">
+                                <p style="color: #fecaca; margin: 0; font-size: 13px;"><strong>Result:</strong> System doesn't match actual business requirements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Summary -->
+            <div style="margin-top: 25px; padding: 20px; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid #b91c1c;">
+                <h3 style="color: #fecaca; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">📊 Impact on Operations:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> E-shop displays incorrect product information
+                    </div>
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> Stock levels don't sync properly
+                    </div>
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> Pricing errors affect revenue
+                    </div>
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> Warehouse can't locate items
+                    </div>
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> Reports generate incorrect data
+                    </div>
+                    <div style="color: #fca5a5; font-size: 14px;">
+                        <span style="color: #ef4444; font-weight: 600;">•</span> Customer satisfaction at risk
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Solution -->
+            <div style="margin-top: 20px; text-align: center; padding: 15px; background: rgba(96, 165, 250, 0.1); border-radius: 10px; border: 1px solid #3b82f6;">
+                <p style="color: #93c5fd; margin: 0; font-size: 16px; font-weight: 600;">
+                    ✓ The solution: Export → Fix → Validate → Re-import all 7,000 items with correct structure
+                </p>
+            </div>
+        </div>
+
+        <div class="flowchart">
+            <!-- Phase 1 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">Export & Assess</div>
+                    <div class="phase-duration">Week 1</div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-title">📤 Export from SAP</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Export all 4500 existing items</li>
+                                <li>Include ALL fields</li>
+                                <li>Save original as backup</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">🔍 Document Issues</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>List incorrect fields</li>
+                                <li>Identify error patterns</li>
+                                <li>Note missing data</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">📝 Prepare New Items</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Set up 2500 new items in Excel</li>
+                                <li>Use CORRECT structure</li>
+                                <li>Keep separate for now</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Phase 2 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">Create Master Template</div>
+                    <div class="phase-duration">Week 1-2</div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-title">📋 Define Structure</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Map all required SAP fields</li>
+                                <li>Define mandatory vs optional</li>
+                                <li>Document format requirements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">✅ Create Validation Rules</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Data validation dropdowns</li>
+                                <li>Conditional formatting</li>
+                                <li>Formula checks for logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Phase 3 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">Fix Existing Data</div>
+                    <div class="phase-duration">Week 2-3</div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-title">🔧 Systematic Corrections</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Find & Replace common errors</li>
+                                <li>Use formulas to standardize</li>
+                                <li>VLOOKUP for missing fields</li>
+                                <li>Sort/filter by category</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">🎯 Prioritize Fixes</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Critical: SKU, pricing, stock</li>
+                                <li>High: descriptions, categories</li>
+                                <li>Low: nice-to-have fields</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Phase 4 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">4</div>
+                    <div class="phase-title">Merge & Validate</div>
+                    <div class="phase-duration">Week 3-4</div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-title">🔗 Combine Data</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Merge corrected 4500 items</li>
+                                <li>Add new 2500 items</li>
+                                <li>Create single master file</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">✓ Run Checks</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>No duplicate SKUs</li>
+                                <li>All mandatory fields filled</li>
+                                <li>Consistent naming</li>
+                                <li>Price logic validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">📦 Create Batches</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Split by category/supplier</li>
+                                <li>500-1000 items per batch</li>
+                                <li>Prepare for staged import</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Phase 5 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">5</div>
+                    <div class="phase-title">Clean SAP & Re-import</div>
+                    <div class="phase-duration">Week 4-5</div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-title">🗑️ Clean SAP</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Delete/archive incorrect 4500 items</li>
+                                <li>Check transaction history first</li>
+                                <li>Coordinate with finance team</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">🧪 Test Import</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Import 100-200 test items</li>
+                                <li>Verify in SAP</li>
+                                <li>Check eshop integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">📥 Full Import</div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Import in controlled batches</li>
+                                <li>Validate each batch</li>
+                                <li>Complete all 7000 items</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div style="background: linear-gradient(135deg, #065f46 0%, #047857 100%); color: #d1fae5; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 1px solid #059669;">
+                <div style="font-size: 48px; margin-bottom: 10px;">✓</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 10px;">Success!</div>
+                <div style="font-size: 16px; opacity: 0.95;">7000 clean, consistent items in SAP ready for your eshop</div>
+            </div>
+        </div>
+
+        <!-- Critical Warnings -->
+        <div class="warning-box">
+            <div class="warning-title">
+                <span style="font-size: 24px;">⚠️</span>
+                Critical Warnings Before Starting
+            </div>
+            <div class="warning-content">
+                <ul>
+                    <li><strong>Check Transaction History:</strong> Items with sales/purchase orders may need updating instead of deletion</li>
+                    <li><strong>Backup Everything:</strong> Keep original SAP export and version control your Excel corrections</li>
+                    <li><strong>Test Environment:</strong> Use SAP test/development environment if available before live import</li>
+                    <li><strong>Coordinate Teams:</strong> Inform finance, sales, and warehouse teams about the migration timeline</li>
+                    <li><strong>Document Changes:</strong> Keep a log of what was changed and why for future reference</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #1e3a5f; border-radius: 10px; border-left: 5px solid #3b82f6; border: 1px solid #1e40af;">
+            <div style="color: #93c5fd; font-weight: 600; margin-bottom: 10px; font-size: 16px;">💡 Time Investment</div>
+            <div style="color: #bfdbfe; line-height: 1.8;">
+                This process takes 3-5 weeks done properly, but saves you from 6+ months of ongoing problems. Clean data from the start means smooth eshop operations and accurate inventory management.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
