@@ -2,7 +2,7 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Επεξήγηση Συμβάντος Ιστοσελίδας – aigaia.com.cy</title>
+  <title>Website Incident Explanation – aigaia.com.cy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -38,159 +38,145 @@
       padding: 2px 6px;
       border-radius: 4px;
     }
+    hr {
+      margin: 60px 0;
+      border: none;
+      border-top: 2px solid #ddd;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <h1>Τι συνέβη με την ιστοσελίδα aigaia.com.cy</h1>
-    <p><em>Επεξήγηση σε απλή και κατανοητή γλώσσα</em></p>
+  <!-- ================= GREEK VERSION ================= -->
 
-    <h2>1. Τι παρατηρήθηκε</h2>
-    <p>
-      Τη Δευτέρα το πρωί, περίπου στις <strong>10:00</strong>, μέλη του προσωπικού
-      διαπίστωσαν ότι η ιστοσελίδα <strong>www.aigaia.com.cy</strong> δεν ήταν προσβάσιμη.
-      Η ιστοσελίδα δεν φόρτωνε, παρότι μέχρι τότε λειτουργούσε κανονικά.
-    </p>
+  <h1>Τι συνέβη με την ιστοσελίδα aigaia.com.cy</h1>
+  <p><em>Επεξήγηση σε απλή και κατανοητή γλώσσα</em></p>
 
-    <p>
-      Σημαντικό στοιχείο είναι ότι το πρόβλημα:
-    </p>
-    <ul>
-      <li><strong>δεν εντοπίστηκε από την εταιρεία διαχείρισης</strong></li>
-      <li>εντοπίστηκε από χρήστες που προσπαθούσαν να επισκεφθούν την ιστοσελίδα</li>
-    </ul>
+  <h2>1. Τι παρατηρήθηκε</h2>
+  <p>
+    Τη Δευτέρα το πρωί, περίπου στις <strong>10:00</strong>, μέλη του προσωπικού
+    διαπίστωσαν ότι η ιστοσελίδα <strong>www.aigaia.com.cy</strong> δεν ήταν προσβάσιμη.
+  </p>
 
-    <p>
-      Η λειτουργία της ιστοσελίδας αποκαταστάθηκε περίπου στις <strong>12:00</strong>.
-    </p>
+  <ul>
+    <li><strong>Το πρόβλημα δεν εντοπίστηκε από την εταιρεία διαχείρισης</strong></li>
+    <li>Εντοπίστηκε από χρήστες που προσπαθούσαν να επισκεφθούν την ιστοσελίδα</li>
+  </ul>
 
-    <h2>2. Τι είναι το DNS (με απλά λόγια)</h2>
-    <p>
-      Για να καταλάβουμε τι συνέβη, είναι χρήσιμο να εξηγήσουμε τι είναι το DNS.
-    </p>
+  <p>Η λειτουργία αποκαταστάθηκε περίπου στις <strong>12:00</strong>.</p>
 
-    <p>
-      Το DNS λειτουργεί όπως ένας <strong>τηλεφωνικός κατάλογος του διαδικτύου</strong>.
-      Όταν πληκτρολογούμε:
-    </p>
+  <h2>2. Τι είναι το DNS (με απλά λόγια)</h2>
+  <p>
+    Το DNS λειτουργεί όπως ένας <strong>τηλεφωνικός κατάλογος του διαδικτύου</strong>.
+    Όταν πληκτρολογούμε:
+  </p>
 
-    <code>www.aigaia.com.cy</code>
+  <code>www.aigaia.com.cy</code>
 
-    <p>
-      ο υπολογιστής μας ρωτά:
-    </p>
+  <p>ο υπολογιστής ρωτά: «Σε ποιον server βρίσκεται αυτή η ιστοσελίδα;»</p>
 
-    <blockquote>
-      «Σε ποιον υπολογιστή (server) βρίσκεται αυτή η ιστοσελίδα;»
-    </blockquote>
+  <p>Η απάντηση είναι ένας αριθμός (IP), π.χ.:</p>
+  <code>181.214.31.81</code>
 
-    <p>
-      Το DNS απαντά με έναν αριθμό (διεύθυνση IP), π.χ.:
-    </p>
+  <p>
+    Αν αυτή η πληροφορία είναι λανθασμένη ή αλλάξει,
+    η ιστοσελίδα δεν μπορεί να βρεθεί.
+  </p>
 
-    <code>181.214.31.81</code>
+  <h2>3. Τι μας αναφέρθηκε</h2>
+  <ul>
+    <li>Αναφέρθηκε ότι «το πρόβλημα διορθώθηκε»</li>
+    <li>Δεν δόθηκε σαφής εξήγηση για την καθυστέρηση</li>
+    <li>Δεν αναφέρθηκε αλλαγή DNS ή χρόνος διάδοσης</li>
+    <li>Η λύση που προτάθηκε ήταν καθαρισμός cache</li>
+  </ul>
 
-    <p>
-      Αν αυτή η πληροφορία είναι λανθασμένη, λείπει ή αλλάξει ξαφνικά,
-      η ιστοσελίδα δεν είναι προσβάσιμη, ακόμη και αν ο server λειτουργεί κανονικά.
-    </p>
+  <h2>4. Γιατί αυτό δεν επαρκεί</h2>
+  <ul>
+    <li>Το πρόβλημα ήταν γενικό, όχι τοπικό</li>
+    <li>Η αποκατάσταση έγινε ταυτόχρονα</li>
+    <li>Παρατηρήθηκε πολύ μικρό TTL</li>
+  </ul>
 
-    <h2>3. Τι μας αναφέρθηκε κατά τη διάρκεια του περιστατικού</h2>
-    <p>
-      Κατά την επικοινωνία με την εταιρεία διαχείρισης:
-    </p>
+  <h2>5. Τι πιθανότατα συνέβη</h2>
+  <ul>
+    <li>Υπήρξε αλλαγή ή σφάλμα στη διαχείριση</li>
+    <li>Δεν υπήρχε ενεργό monitoring</li>
+    <li>Η διόρθωση έγινε αντιδραστικά</li>
+  </ul>
 
-    <ul>
-      <li>Μας αναφέρθηκε ότι το πρόβλημα «είχε διορθωθεί»</li>
-      <li>
-        Όταν επισημάνθηκε ότι η ιστοσελίδα εξακολουθούσε να μην είναι προσβάσιμη
-        από το εσωτερικό δίκτυο:
-        <ul>
-          <li>δεν δόθηκε σαφής τεχνική εξήγηση</li>
-          <li>δεν αναφέρθηκε αλλαγή DNS ή χρόνος διάδοσης (propagation)</li>
-          <li>η προτεινόμενη ενέργεια ήταν ο καθαρισμός της τοπικής μνήμης DNS (cache)</li>
-        </ul>
-      </li>
-    </ul>
+  <h2>6. Συμπέρασμα</h2>
+  <p>
+    Το περιστατικό δείχνει ότι ο τρόπος διαχείρισης
+    και επικοινωνίας χρειάζεται επανεξέταση.
+  </p>
 
-    <p>
-      Δεν δηλώθηκε ρητά τι ακριβώς είχε «διορθωθεί», ούτε δόθηκε εκτίμηση
-      για το πότε θα αποκαθίστατο πλήρως η πρόσβαση.
-    </p>
+  <hr>
 
-    <h2>4. Γιατί η εξήγηση αυτή δεν επαρκεί</h2>
-    <p>
-      Με βάση τα στοιχεία που εξετάστηκαν:
-    </p>
+  <!-- ================= ENGLISH VERSION ================= -->
 
-    <ul>
-      <li>Η ιστοσελίδα δεν ήταν προσβάσιμη γενικά, όχι μόνο τοπικά</li>
-      <li>Η αποκατάσταση έγινε ταυτόχρονα, χωρίς να καθαριστούν όλοι οι υπολογιστές</li>
-      <li>Οι ρυθμίσεις DNS δείχνουν πρόσφατη αλλαγή με πολύ μικρό χρόνο ισχύος</li>
-    </ul>
+  <h1>What Happened to the aigaia.com.cy Website</h1>
+  <p><em>Plain-language explanation</em></p>
 
-    <p>
-      Τα παραπάνω δείχνουν ότι το πρόβλημα δεν οφειλόταν
-      στη μνήμη των υπολογιστών, αλλά σε κεντρική ρύθμιση
-      που διαχειρίζεται η εταιρεία.
-    </p>
+  <h2>1. What was observed</h2>
+  <p>
+    On Monday morning, around <strong>10:00</strong>, staff discovered that
+    <strong>www.aigaia.com.cy</strong> was not accessible.
+  </p>
 
-    <h2>5. Τι είναι το TTL και γιατί έχει σημασία</h2>
-    <p>
-      Το TTL (Time To Live) καθορίζει για πόσο χρόνο
-      αποθηκεύεται η διεύθυνση μιας ιστοσελίδας.
-    </p>
+  <ul>
+    <li><strong>The issue was not detected by the managed services provider</strong></li>
+    <li>It was identified by users attempting to access the site</li>
+  </ul>
 
-    <p>
-      Η παρατήρηση πολύ μικρού TTL συνήθως σημαίνει
-      ότι έγινε πρόσφατη και επείγουσα αλλαγή
-      για την αποκατάσταση ενός προβλήματος.
-    </p>
+  <p>The site was restored at approximately <strong>12:00</strong>.</p>
 
-    <h2>6. Τι πιθανότατα συνέβη</h2>
-    <p>
-      Με βάση όλα τα διαθέσιμα στοιχεία:
-    </p>
+  <h2>2. What DNS is (in simple terms)</h2>
+  <p>
+    DNS is like a <strong>phone book for the internet</strong>.
+    When you enter a website address, your computer asks:
+  </p>
 
-    <ul>
-      <li>Κάτι άλλαξε ή παρουσίασε πρόβλημα στη διαχείριση της ιστοσελίδας</li>
-      <li>Δεν υπήρχε αυτόματο σύστημα ειδοποίησης</li>
-      <li>Η διόρθωση έγινε αντιδραστικά, αφού το πρόβλημα αναφέρθηκε</li>
-    </ul>
+  <blockquote>“Which server hosts this website?”</blockquote>
 
-    <h2>7. Τι δεν φαίνεται να συνέβη</h2>
-    <ul>
-      <li>Δεν προκύπτει πτώση του server</li>
-      <li>Δεν χάθηκαν δεδομένα</li>
-      <li>Δεν υπήρξε πρόβλημα ασφάλειας</li>
-      <li>Δεν άλλαξε το πιστοποιητικό ασφαλείας (SSL)</li>
-    </ul>
+  <p>The answer is an IP address, for example:</p>
+  <code>181.214.31.81</code>
 
-    <h2>8. Το βασικό ζήτημα</h2>
-    <p>
-      Ανεξάρτητα από την τεχνική αιτία, το σοβαρότερο πρόβλημα είναι ότι:
-    </p>
+  <p>
+    If this information is missing or incorrect,
+    the website cannot be found.
+  </p>
 
-    <ul>
-      <li>δεν υπήρχε ενεργή παρακολούθηση (monitoring)</li>
-      <li>δεν υπήρξε έγκαιρη ειδοποίηση</li>
-      <li>δεν δόθηκε σαφής και πλήρης τεχνική εξήγηση</li>
-    </ul>
+  <h2>3. What we were told</h2>
+  <ul>
+    <li>We were told the issue was “fixed”</li>
+    <li>No clear technical explanation was provided</li>
+    <li>No mention of DNS propagation or timing</li>
+    <li>Cache clearing was suggested as the solution</li>
+  </ul>
 
-    <h2>9. Συμπέρασμα</h2>
-    <p>
-      Παρότι η ιστοσελίδα αποκαταστάθηκε, η επικοινωνία
-      και η διαχείριση του περιστατικού δεν παρείχαν
-      σαφή εικόνα για το τι προκάλεσε το πρόβλημα.
-    </p>
+  <h2>4. Why this explanation does not hold</h2>
+  <ul>
+    <li>The issue affected multiple networks</li>
+    <li>Restoration occurred simultaneously</li>
+    <li>DNS settings showed a very short TTL</li>
+  </ul>
 
-    <p>
-      Το περιστατικό αυτό δείχνει ότι ο τρόπος
-      διαχείρισης της ιστοσελίδας χρειάζεται επανεξέταση.
-    </p>
+  <h2>5. What most likely happened</h2>
+  <ul>
+    <li>A DNS or backend configuration problem occurred</li>
+    <li>No automated monitoring detected the outage</li>
+    <li>The fix was reactive after user reporting</li>
+  </ul>
 
-  </div>
+  <h2>6. Conclusion</h2>
+  <p>
+    Although service was restored, the handling and communication
+    of the incident fell below expected standards for managed services.
+  </p>
+
+</div>
 </body>
 </html>
